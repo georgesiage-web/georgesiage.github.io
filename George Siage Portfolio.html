@@ -1,0 +1,442 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>George Siage Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Instrument+Sans:wght@400;500;600&family=Young+Serif&display=swap">
+<style>
+  /* Layout: a call-sheet portfolio. Left-aligned hero with a production "slate" beside the name,
+     then credits grouped by studio, each row a credit line with roles and watch links. */
+  :root {
+    --bg: #ecdfc8;
+    --surface: #f4eadb;
+    --fg: #2c1d13;
+    --muted: #6f5844;
+    --line: #cdb89a;
+    --clay: #a2482a;
+    --olive: #596036;
+    --ochre: #b9812a;
+    --on-clay: #fbf3e6;
+    --display: "Young Serif", "Iowan Old Style", Georgia, serif;
+    --body: "Instrument Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+    --mono: "DM Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #1d140e;
+      --surface: #291d15;
+      --fg: #f0e4cf;
+      --muted: #b49c82;
+      --line: #4a392b;
+      --clay: #dd8c5f;
+      --olive: #adb374;
+      --ochre: #e2b065;
+      --on-clay: #20140c;
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #1d140e;
+    --surface: #291d15;
+    --fg: #f0e4cf;
+    --muted: #b49c82;
+    --line: #4a392b;
+    --clay: #dd8c5f;
+    --olive: #adb374;
+    --ochre: #e2b065;
+    --on-clay: #20140c;
+    color-scheme: dark;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: var(--body);
+    font-size: 17px;
+    line-height: 1.6;
+    padding-inline: 20px;
+    padding-block: 0 48px;
+  }
+  .wrap { max-width: 1040px; margin-inline: auto; }
+  a { color: inherit; }
+  :focus-visible { outline: 3px solid var(--ochre); outline-offset: 3px; border-radius: 4px; }
+
+  .label {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  h1, h2, h3 { font-family: var(--display); font-weight: 400; text-wrap: balance; margin: 0; line-height: 1.08; }
+
+  /* top bar */
+  .bar {
+    display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
+    gap: 12px 24px; padding-block: 22px;
+    border-bottom: 1px solid var(--line);
+  }
+  .bar nav { display: flex; gap: 22px; flex-wrap: wrap; }
+  .bar nav a { text-decoration: none; font-family: var(--mono); font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
+  .bar nav a:hover { color: var(--clay); }
+
+  /* hero */
+  .hero { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: 40px 56px; padding-block: 72px 64px; align-items: end; }
+  .hero h1 { font-size: clamp(3.2rem, 9vw, 6.6rem); letter-spacing: -0.02em; }
+  .hero h1 span { color: var(--clay); }
+  .hero .lede { max-width: 34rem; margin: 28px 0 0; font-size: 1.15rem; color: var(--muted); }
+  .hero .lede b { color: var(--fg); font-weight: 600; }
+  .cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 10px; text-decoration: none;
+    font-weight: 600; font-size: 15px; padding: 12px 20px; border-radius: 999px;
+    background: var(--clay); color: var(--on-clay); border: 1.5px solid var(--clay);
+    cursor: pointer; font-family: var(--body);
+  }
+  .btn:hover { filter: brightness(1.08); }
+  .btn.ghost { background: transparent; color: var(--fg); border-color: var(--fg); }
+  .btn.ghost:hover { background: var(--fg); color: var(--bg); filter: none; }
+
+  .slate { background: var(--surface); border: 1.5px solid var(--fg); border-radius: 6px; overflow: hidden; }
+  .slate-top { height: 26px; background: repeating-linear-gradient(-45deg, var(--fg) 0 16px, var(--surface) 16px 32px); border-bottom: 1.5px solid var(--fg); }
+  .slate dl { margin: 0; }
+  .slate .row { display: grid; grid-template-columns: 7.5rem minmax(0, 1fr); gap: 12px; padding: 12px 18px; border-bottom: 1px solid var(--line); align-items: baseline; }
+  .slate .row:last-child { border-bottom: 0; }
+  .slate dt { font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
+  .slate dd { margin: 0; font-weight: 500; overflow-wrap: anywhere; }
+
+  /* sections */
+  section { padding-block: 64px; border-top: 1px solid var(--line); }
+  .sec-head { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 16px 32px; margin-bottom: 36px; }
+  .sec-head h2 { font-size: clamp(2rem, 5vw, 3.1rem); }
+  .sec-head p { margin: 10px 0 0; color: var(--muted); max-width: 32rem; }
+
+  .filters { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 40px; }
+  .chip {
+    font-family: var(--body); font-size: 14px; font-weight: 500; cursor: pointer;
+    padding: 7px 15px; border-radius: 999px; border: 1.5px solid var(--line);
+    background: transparent; color: var(--fg);
+  }
+  .chip:hover { border-color: var(--fg); }
+  .chip[aria-pressed="true"] { background: var(--olive); border-color: var(--olive); color: var(--on-clay); }
+
+  .studio { margin-bottom: 44px; }
+  .studio:last-child { margin-bottom: 0; }
+  .studio-head { display: flex; align-items: baseline; gap: 16px; padding-bottom: 12px; border-bottom: 2px solid var(--fg); }
+  .studio-head h3 { font-size: 1.5rem; }
+  .studio-head .label { margin-left: auto; }
+
+  .credit {
+    display: grid; grid-template-columns: 7rem minmax(0, 1fr) auto; gap: 14px 28px;
+    padding-block: 26px; border-bottom: 1px solid var(--line); align-items: start;
+  }
+  .credit .kind { font-family: var(--mono); font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ochre); padding-top: 7px; }
+  .credit h4 { font-family: var(--display); font-weight: 400; font-size: clamp(1.3rem, 3vw, 1.75rem); line-height: 1.2; margin: 0; text-wrap: balance; }
+  .roles { display: flex; flex-wrap: wrap; gap: 6px; margin: 14px 0 0; padding: 0; list-style: none; }
+  .roles li { font-size: 13px; font-weight: 500; padding: 3px 11px; border-radius: 999px; border: 1px solid var(--line); color: var(--muted); }
+  .roles li.hit { border-color: var(--olive); color: var(--olive); background: transparent; }
+  .note { margin: 10px 0 0; color: var(--muted); font-size: 15px; max-width: 34rem; }
+  .watch { display: flex; flex-direction: column; gap: 8px; align-items: stretch; min-width: 12.5rem; }
+  .play {
+    display: inline-flex; align-items: center; justify-content: space-between; gap: 14px;
+    text-decoration: none; font-weight: 600; font-size: 14px; padding: 10px 16px;
+    border-radius: 999px; border: 1.5px solid var(--fg);
+  }
+  .play svg { width: 14px; height: 14px; fill: currentColor; flex: none; }
+  .play:hover { background: var(--clay); border-color: var(--clay); color: var(--on-clay); }
+  .empty { color: var(--muted); padding-block: 24px; }
+
+  /* about */
+  .about { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr); gap: 32px 64px; }
+  .about h2 { font-size: clamp(2rem, 5vw, 3.1rem); }
+  .about blockquote { margin: 0; font-family: var(--display); font-size: clamp(1.35rem, 3vw, 1.8rem); line-height: 1.3; color: var(--fg); }
+  .about p { margin: 20px 0 0; max-width: 40rem; color: var(--muted); }
+  .about p + p { margin-top: 14px; }
+
+  /* working together */
+  .together { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+  .together div { border-top: 2px solid var(--clay); padding-top: 16px; }
+  .together h3 { font-size: 1.4rem; margin-bottom: 10px; }
+  .together p { margin: 0; color: var(--muted); }
+
+  /* contact */
+  .contact { background: var(--olive); color: var(--on-clay); border-radius: 8px; padding: clamp(28px, 6vw, 56px); }
+  :root:not([data-theme="light"]) .contact { }
+  .contact h2 { font-size: clamp(2rem, 5vw, 3.2rem); max-width: 18ch; }
+  .contact p { margin: 16px 0 0; max-width: 34rem; opacity: 0.92; }
+  .reach { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 1fr)); gap: 14px; margin-top: 32px; }
+  .reach-item { border: 1.5px solid currentColor; border-radius: 6px; padding: 14px 16px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 12px; }
+  .reach-item .label { color: inherit; opacity: 0.8; flex-basis: 100%; }
+  .reach-item .val { font-weight: 600; overflow-wrap: anywhere; user-select: all; }
+  .copy { font-family: var(--body); font-size: 13px; font-weight: 600; cursor: pointer; border: 1.5px solid currentColor; background: transparent; color: inherit; border-radius: 999px; padding: 4px 12px; }
+  .copy:hover { background: var(--on-clay); color: var(--olive); }
+  .mailto { display: inline-block; margin-top: 22px; font-weight: 600; }
+
+  footer { padding-top: 28px; display: flex; flex-wrap: wrap; gap: 8px 24px; justify-content: space-between; color: var(--muted); font-size: 14px; }
+
+  @media (max-width: 860px) {
+    .hero { grid-template-columns: minmax(0, 1fr); padding-block: 48px 48px; }
+    .about { grid-template-columns: minmax(0, 1fr); }
+    .together { grid-template-columns: minmax(0, 1fr); }
+    .credit { grid-template-columns: minmax(0, 1fr); gap: 8px; }
+    .credit .kind { padding-top: 0; }
+    .watch { flex-direction: row; flex-wrap: wrap; min-width: 0; margin-top: 8px; }
+    .studio-head { flex-wrap: wrap; }
+    .studio-head .label { margin-left: 0; flex-basis: 100%; }
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .btn, .play, .chip, .copy { transition: background-color .15s ease, color .15s ease, border-color .15s ease, filter .15s ease; }
+  }
+</style>
+
+<div class="wrap">
+  <header class="bar">
+    <span class="label">George Siage</span>
+    <nav aria-label="Sections">
+      <a href="#work">Work</a>
+      <a href="#about">About</a>
+      <a href="#together">Working together</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <div class="hero">
+    <div>
+      <p class="label" style="margin:0 0 18px">Media Enthusiast</p>
+      <h1>George <span>Siage</span></h1>
+      <p class="lede"><b>Producer and videographer</b> for contract projects. I write, shoot, edit and mix, and I settle into whatever tools and kit your team already uses.</p>
+      <div class="cta">
+        <a class="btn" href="#work">See the work</a>
+        <a class="btn ghost" href="#contact">Start a project</a>
+      </div>
+    </div>
+    <aside class="slate" aria-label="At a glance">
+      <div class="slate-top" aria-hidden="true"></div>
+      <dl>
+        <div class="row"><dt>Role</dt><dd>Producer, Videographer</dd></div>
+        <div class="row"><dt>Also</dt><dd>Editing, Sound, Script, Graphics, Directing</dd></div>
+        <div class="row"><dt>Credits</dt><dd>6 credits, 2 studios</dd></div>
+        <div class="row"><dt>Taking</dt><dd>Contract work</dd></div>
+      </dl>
+    </aside>
+  </div>
+
+  <section id="work">
+    <div class="sec-head">
+      <div>
+        <h2>Selected work</h2>
+        <p>Productions and livestreams made with Purelight Missions and Hope Channel Kenya. Most credits link to the video on YouTube.</p>
+      </div>
+    </div>
+
+    <div class="filters" role="group" aria-label="Filter credits by role">
+      <button class="chip" type="button" data-role="all" aria-pressed="true">All roles</button>
+      <button class="chip" type="button" data-role="Producer" aria-pressed="false">Producer</button>
+      <button class="chip" type="button" data-role="Videography" aria-pressed="false">Videography</button>
+      <button class="chip" type="button" data-role="Director" aria-pressed="false">Director</button>
+      <button class="chip" type="button" data-role="Editing" aria-pressed="false">Editing</button>
+      <button class="chip" type="button" data-role="Sound" aria-pressed="false">Sound</button>
+      <button class="chip" type="button" data-role="Script" aria-pressed="false">Script</button>
+      <button class="chip" type="button" data-role="Graphics" aria-pressed="false">Graphics</button>
+    </div>
+
+    <div class="studio" data-studio>
+      <div class="studio-head">
+        <h3>Purelight Missions</h3>
+        <span class="label">5 credits</span>
+      </div>
+
+      <article class="credit" data-roles="Producer Videography Sound">
+        <span class="kind">Livestream</span>
+        <div>
+          <h4>Convocation Livestreams</h4>
+          <p class="note">Live convocation series for Purelight Missions, streamed from September 2024 to April 2026. Three sample sessions are linked here.</p>
+          <ul class="roles"><li data-r="Producer">Producer</li><li data-r="Videography">Videographer</li><li data-r="Sound">Sound technician</li></ul>
+        </div>
+        <div class="watch">
+          <a class="play" href="https://www.youtube.com/watch?v=pmhBLDwtSEo" target="_blank" rel="noopener">Armed for the Storm <svg viewBox="0 0 14 14" aria-hidden="true"><path d="M2 1l11 6-11 6z"/></svg></a>
+          <a class="play" href="https://www.youtube.com/watch?v=vVPvIy0p2hQ" target="_blank" rel="noopener">Restoring True Education <svg viewBox="0 0 14 14" aria-hidden="true"><path d="M2 1l11 6-11 6z"/></svg></a>
+          <a class="play" href="https://www.youtube.com/watch?v=4GmR2bwVHt4" target="_blank" rel="noopener">Clash for Global Dominance <svg viewBox="0 0 14 14" aria-hidden="true"><path d="M2 1l11 6-11 6z"/></svg></a>
+        </div>
+      </article>
+
+      <article class="credit" data-roles="Script Graphics Sound">
+        <span class="kind">Promo</span>
+        <div>
+          <h4>2026 Autumn Convocation Promo Video</h4>
+          <ul class="roles"><li data-r="Script">Script</li><li data-r="Graphics">Graphics</li><li data-r="Sound">Sound</li></ul>
+        </div>
+        <div class="watch">
+          <a class="play" href="https://www.youtube.com/watch?v=ZuOAS0UZ5do" target="_blank" rel="noopener">Watch on YouTube <svg viewBox="0 0 14 14" aria-hidden="true"><path d="M2 1l11 6-11 6z"/></svg></a>
+        </div>
+      </article>
+
+      <article class="credit" data-roles="Producer Script Editing Director">
+        <span class="kind">Promo</span>
+        <div>
+          <h4>2025 Spring Convocation Promo Video</h4>
+          <ul class="roles"><li data-r="Producer">Producer</li><li data-r="Script">Script</li><li data-r="Editing">Video editor</li><li data-r="Director">Director</li></ul>
+        </div>
+        <div class="watch">
+          <a class="play" href="https://www.youtube.com/watch?v=ktD8X-IsFeo" target="_blank" rel="noopener">Watch on YouTube <svg viewBox="0 0 14 14" aria-hidden="true"><path d="M2 1l11 6-11 6z"/></svg></a>
+        </div>
+      </article>
+
+      <article class="credit" data-roles="Producer Script Editing Sound">
+        <span class="kind">Promo</span>
+        <div>
+          <h4>2025 Autumn Convocation Promo Video</h4>
+          <ul class="roles"><li data-r="Producer">Producer</li><li data-r="Script">Script</li><li data-r="Editing">Video editor</li><li data-r="Sound">Sound editor</li></ul>
+        </div>
+        <div class="watch">
+          <a class="play" href="https://www.youtube.com/watch?v=8m8fK23te4s" target="_blank" rel="noopener">Watch on YouTube <svg viewBox="0 0 14 14" aria-hidden="true"><path d="M2 1l11 6-11 6z"/></svg></a>
+        </div>
+      </article>
+
+      <article class="credit" data-roles="Producer Editing Sound Graphics">
+        <span class="kind">Talk series</span>
+        <div>
+          <h4>Remnant Talks</h4>
+          <ul class="roles"><li data-r="Producer">Producer</li><li data-r="Editing">Video editor</li><li data-r="Sound">Sound editor</li><li data-r="Graphics">Graphic design</li></ul>
+        </div>
+        <div class="watch">
+          <a class="play" href="https://www.youtube.com/watch?v=gQVeFQx0D1s" target="_blank" rel="noopener">Watch talk 1 <svg viewBox="0 0 14 14" aria-hidden="true"><path d="M2 1l11 6-11 6z"/></svg></a>
+          <a class="play" href="https://www.youtube.com/watch?v=lIIGj6VIgBQ" target="_blank" rel="noopener">Watch talk 2 <svg viewBox="0 0 14 14" aria-hidden="true"><path d="M2 1l11 6-11 6z"/></svg></a>
+          <a class="play" href="https://www.youtube.com/watch?v=ow7SSpgarP0" target="_blank" rel="noopener">Watch talk 3 <svg viewBox="0 0 14 14" aria-hidden="true"><path d="M2 1l11 6-11 6z"/></svg></a>
+        </div>
+      </article>
+    </div>
+
+    <div class="studio" data-studio>
+      <div class="studio-head">
+        <h3>Hope Channel Kenya</h3>
+        <span class="label">1 credit</span>
+      </div>
+
+      <article class="credit" data-roles="Videography">
+        <span class="kind">Series</span>
+        <div>
+          <h4>First Foods Made Fast, Season 1</h4>
+          <ul class="roles"><li data-r="Videography">Videography</li></ul>
+        </div>
+        <div class="watch">
+          <a class="play" href="https://www.youtube.com/watch?v=8wR35tpd2Vo" target="_blank" rel="noopener">Watch on YouTube <svg viewBox="0 0 14 14" aria-hidden="true"><path d="M2 1l11 6-11 6z"/></svg></a>
+        </div>
+      </article>
+    </div>
+
+    <p class="empty" id="empty" hidden>No credits match that role yet.</p>
+  </section>
+
+  <section id="about" class="about">
+    <div>
+      <p class="label" style="margin:0 0 14px">About</p>
+      <h2>Media with a purpose</h2>
+    </div>
+    <div>
+      <blockquote>I’ve always seen media as more than just cameras, editing, or technology; for me, it’s a way of sharing the love of Jesus with people.</blockquote>
+      <p>Through my experience in livestreaming, content creation, and digital communications, I’ve had the privilege of using media to support the work of the gospel. What makes this work meaningful to me is knowing that a message shared through a screen can reach someone who might never walk through the doors of a church.</p>
+      <p>My heart is to keep learning, growing, and using the gifts God has given me to tell others about Jesus, encourage the Church, and help take the everlasting gospel to the world.</p>
+    </div>
+  </section>
+
+  <section id="together">
+    <div class="sec-head">
+      <div>
+        <h2>Working together</h2>
+        <p>Most of my work comes through contracts, so I build each project around your team, your goals and your timeline.</p>
+      </div>
+    </div>
+    <div class="together">
+      <div>
+        <h3>I join your team</h3>
+        <p>I can lead a production as producer or slot into a role you need filled, whether that is shooting, editing, sound or script. I share drafts early and welcome notes at every stage.</p>
+      </div>
+      <div>
+        <h3>I adapt to your setup</h3>
+        <p>Different editing software, different cameras, different workflows. I learn what your project runs on and work inside it, so you never have to change your pipeline for me.</p>
+      </div>
+      <div>
+        <h3>I start from your message</h3>
+        <p>Every project begins with what you want people to understand and feel. The script, the shots and the sound all follow from that.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" style="border-top:0; padding-top:24px">
+    <div class="contact">
+      <p class="label" style="margin:0 0 14px; color:inherit; opacity:.8">Contact</p>
+      <h2>Have a project in mind?</h2>
+      <p>Tell me what you are making, when you need it and what gear or software your team uses. I will reply with how I can help.</p>
+      <div class="reach">
+        <div class="reach-item">
+          <span class="label">Email</span>
+          <span class="val" id="email">georgesochieng2@gmail.com</span>
+          <button class="copy" type="button" data-copy="email">Copy</button>
+        </div>
+        <div class="reach-item">
+          <span class="label">Phone</span>
+          <span class="val" id="phone">+254 728 489774</span>
+          <button class="copy" type="button" data-copy="phone">Copy</button>
+        </div>
+      </div>
+      <a class="mailto" href="mailto:georgesochieng2@gmail.com">Open in your email app</a>
+    </div>
+  </section>
+
+  <footer>
+    <span>George Siage, Media Enthusiast</span>
+    <span>Producer and videographer</span>
+  </footer>
+</div>
+
+<script>
+(function () {
+  var chips = document.querySelectorAll('.chip');
+  var credits = document.querySelectorAll('.credit');
+  var studios = document.querySelectorAll('[data-studio]');
+  var empty = document.getElementById('empty');
+
+  function apply(role) {
+    var shown = 0;
+    credits.forEach(function (c) {
+      var has = role === 'all' || c.dataset.roles.split(' ').indexOf(role) !== -1;
+      c.hidden = !has;
+      if (has) shown++;
+      c.querySelectorAll('.roles li').forEach(function (li) {
+        li.classList.toggle('hit', role !== 'all' && li.dataset.r === role);
+      });
+    });
+    studios.forEach(function (s) {
+      var any = Array.prototype.some.call(s.querySelectorAll('.credit'), function (c) { return !c.hidden; });
+      s.hidden = !any;
+    });
+    empty.hidden = shown !== 0;
+  }
+
+  chips.forEach(function (chip) {
+    chip.addEventListener('click', function () {
+      chips.forEach(function (c) { c.setAttribute('aria-pressed', c === chip ? 'true' : 'false'); });
+      apply(chip.dataset.role);
+    });
+  });
+
+  document.querySelectorAll('.copy').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var el = document.getElementById(btn.dataset.copy);
+      var text = el.textContent;
+      function done() { btn.textContent = 'Copied'; setTimeout(function () { btn.textContent = 'Copy'; }, 1600); }
+      function fallback() {
+        var r = document.createRange(); r.selectNodeContents(el);
+        var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+        btn.textContent = 'Selected'; setTimeout(function () { btn.textContent = 'Copy'; }, 1600);
+      }
+      try {
+        navigator.clipboard.writeText(text).then(done, fallback);
+      } catch (e) { fallback(); }
+    });
+  });
+})();
+</script>
+
+</body></html>
